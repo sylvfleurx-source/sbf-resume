@@ -134,7 +134,7 @@
   <div class="hero" id="top">
     <div class="eyebrow">Welcome ✦</div>
     <h1>Hi, I'm Sophie Brotman.</h1>
-    <p class="lede">I'm a philosophy student at Barnard College of Columbia University, a legal assistant at a tax law firm, and a bilingual volunteer in immigration advocacy. In between all of that, I taught myself to build things: AI tools, automations, and websites. Zero software-engineering background, just a philosophy major who learned to ship. This page is a quick tour. Thanks for taking a look.</p>
+    <p class="lede">I'm a philosophy student at Barnard College of Columbia University, a legal assistant at a tax law firm, and a bilingual volunteer in immigration advocacy. In between all of that, I build and ship things: websites, automations, and AI tools. What I'm good at is taking a messy problem apart and driving it to something that actually runs. This page is a quick tour. Thanks for taking a look.</p>
     <div class="herobtns">
       <a class="btn" href="#case">See my featured project →</a>
       <a class="btn btn-ghost" href="#builds">Browse the sites →</a>
@@ -274,20 +274,20 @@
       <div class="build">
         <div class="thumb"><img src="mirari.png" alt="Mirari" onerror="this.style.display='none';this.parentNode.classList.add('empty')"></div>
         <h3>Mirari</h3>
-        <span class="badge">109 real pieces · 22 aesthetics</span>
+        <span class="badge">on-device CLIP + pgvector</span>
         <div class="url">my own AI concept</div>
-        <p class="what">Mirari turns a Pinterest mood board into real clothes. You drop in a board screenshot or a few pins, and it reads the vibe straight out of the pixels (not tags or captions), names it, and returns real, shoppable pieces that match. It even recolors its whole interface to the colors in your board.</p>
-        <p class="how">The matching is real and runs <b>in the browser, no server</b>: each pin goes through <b>CLIP on-device</b>, and I use CLIP's text encoder to zero-shot classify the board across 22 aesthetics (think "46% coquette, 28% lace," read from the images, not keywords). A <b>Supabase pgvector</b> query then ranks 109 real, shoppable pieces I pulled live from 39 brands' Shopify feeds. When I found that scraping Pinterest URLs gets bot-blocked and returns empty shells, I pivoted to screenshots so the demo never silently fails. Front end on Vercel. It started as Sofelle before I rebuilt and rebranded it Mirari.</p>
+        <p class="what">Mirari turns a Pinterest mood board into real clothes. You drop in a board screenshot or a few pins, and it reads the aesthetic straight from the pixels (not tags or captions), names it, and returns real, shoppable pieces that match.</p>
+        <p class="how">The matching slice is genuinely real and runs <b>on-device</b>: when you drop a board, a <b>CLIP vision model (clip-vit-base-patch32, via Transformers.js)</b> embeds the images right in the browser, names the aesthetic by zero-shot text matching, and a <b>Supabase pgvector</b> query ranks a hand-picked catalog of 73 real, shoppable pieces by visual distance. No scraping, no API keys. I'd wanted a paste-a-Pinterest-URL flow, but those pages are bot-blocked and would fail live, so I pivoted to screenshots. Built on Vercel. It started as Sofelle before I rebranded it Mirari.</p>
         <div class="foot"><a class="btn" href="https://sofelle-git-main-sofelle.vercel.app" target="_blank" rel="noopener">Visit Mirari →</a></div>
       </div>
 
       <div class="build">
         <div class="thumb"><img src="fit2serve.png" alt="Fit2Serve workout logger" onerror="this.style.display='none';this.parentNode.classList.add('empty')"></div>
         <h3>Fit2Serve</h3>
-        <span class="badge">22 active users</span>
+        <span class="badge">23 active members</span>
         <div class="url">fit-2-serve.fit</div>
         <p class="what">A workout-logging web app I built for a church ministry. Members log walks, runs, and workouts, and the app tracks miles, steps, and minutes and ranks everyone on a live leaderboard, with a shared schedule alongside it.</p>
-        <p class="how">I <b>built the whole app end to end</b>, the logging form, the leaderboard, and the schedule, and shipped it on its own custom domain. It currently has 22 active members in the ministry logging their workouts.</p>
+        <p class="how">I <b>built the whole app end to end</b>, the logging form, the leaderboard, and the schedule, with a Netlify front end writing to a Google Sheet, and shipped it on its own custom domain. It currently has 23 active members logging their workouts.</p>
         <div class="foot"><a class="btn" href="https://fit-2-serve.fit" target="_blank" rel="noopener">Visit Fit2Serve →</a></div>
       </div>
 
