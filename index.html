@@ -134,7 +134,7 @@
   <div class="hero" id="top">
     <div class="eyebrow">Welcome ✦</div>
     <h1>Hi, I'm Sophie Brotman.</h1>
-    <p class="lede">I'm a philosophy student at Barnard College of Columbia University, a legal assistant at a tax law firm, and a bilingual volunteer in immigration advocacy. I'm also a builder. I make AI tools, automations, and websites, usually as the only non-engineer in the room. This page is a quick tour of what I've made. Thanks for taking a look.</p>
+    <p class="lede">I'm a philosophy student at Barnard College of Columbia University, a legal assistant at a tax law firm, and a bilingual volunteer in immigration advocacy. In between all of that, I taught myself to build things: AI tools, automations, and websites. Zero software-engineering background, just a philosophy major who learned to ship. This page is a quick tour. Thanks for taking a look.</p>
     <div class="herobtns">
       <a class="btn" href="#case">See my featured project →</a>
       <a class="btn btn-ghost" href="#builds">Browse the sites →</a>
@@ -143,7 +143,7 @@
 
   <section id="case">
     <div class="eyebrow">Featured project</div>
-    <h1 class="subhead">I automated a tax law firm's client pipeline, end to end, as a non-engineer.</h1>
+    <h1 class="subhead">I automated a tax law firm's client pipeline, end to end, self-taught.</h1>
     <p class="lede" style="margin-top:14px">Brotman Law had no dedicated intake specialist, so I took intake on. Then I built an AI operations suite that runs a potential client from the first phone call through retainers, powers of attorney, and onboarding, with the firm's real rules and guardrails encoded. <strong>Four reusable skills, four connected systems, zero invented legal language.</strong></p>
   </section>
 
@@ -263,7 +263,7 @@
   <section style="border-top:none;padding-top:8px">
     <div class="proof">
       <h3>What this proves</h3>
-      <p>I took a real, messy, high-stakes professional pipeline and automated it end to end across <span class="kw">CRM, scheduling, transcripts, documents, and email</span>, encoding the firm's actual rules and guardrails, <span class="kw">as a non-engineer</span>, by understanding the work deeply enough to translate it into software. Then I packaged it into reusable, trigger-phrase workflows and a daily operating rhythm, so the process runs the same way every time, with or without me at the desk.</p>
+      <p>I took a real, messy, high-stakes professional pipeline and automated it end to end across <span class="kw">CRM, scheduling, transcripts, documents, and email</span>, encoding the firm's actual rules and guardrails, <span class="kw">self-taught</span>, by understanding the work deeply enough to translate it into software. Then I packaged it into reusable, trigger-phrase workflows and a daily operating rhythm, so the process runs the same way every time, with or without me at the desk.</p>
     </div>
   </section>
 
@@ -274,9 +274,10 @@
       <div class="build">
         <div class="thumb"><img src="mirari.png" alt="Mirari" onerror="this.style.display='none';this.parentNode.classList.add('empty')"></div>
         <h3>Mirari</h3>
+        <span class="badge">109 real pieces · 22 aesthetics</span>
         <div class="url">my own AI concept</div>
-        <p class="what">An AI fashion concept, my own idea, taken from a sketch to a working demo.</p>
-        <p class="how">I grounded it by <b>researching how FashionCLIP image-embedding models work</b>, then deliberately scoped the build to a demo I could actually ship with the resources I had, instead of overpromising a full product I couldn't stand behind.</p>
+        <p class="what">Mirari turns a Pinterest mood board into real clothes. You drop in a board screenshot or a few pins, and it reads the vibe straight out of the pixels (not tags or captions), names it, and returns real, shoppable pieces that match. It even recolors its whole interface to the colors in your board.</p>
+        <p class="how">The matching is real and runs <b>in the browser, no server</b>: each pin goes through <b>CLIP on-device</b>, and I use CLIP's text encoder to zero-shot classify the board across 22 aesthetics (think "46% coquette, 28% lace," read from the images, not keywords). A <b>Supabase pgvector</b> query then ranks 109 real, shoppable pieces I pulled live from 39 brands' Shopify feeds. When I found that scraping Pinterest URLs gets bot-blocked and returns empty shells, I pivoted to screenshots so the demo never silently fails. Front end on Vercel. It started as Sofelle before I rebuilt and rebranded it Mirari.</p>
         <div class="foot"><a class="btn" href="https://sofelle-git-main-sofelle.vercel.app" target="_blank" rel="noopener">Visit Mirari →</a></div>
       </div>
 
@@ -304,7 +305,7 @@
         <h3>Brotman Law AI Operations</h3>
         <div class="url">the case study above</div>
         <p class="what">The intake-to-onboarding automation suite for a tax law firm, detailed at the top of this page.</p>
-        <p class="how">I <b>connected four live systems and encoded the firm's real rules and guardrails</b> into reusable, trigger-phrase workflows, plus two scheduled daily tasks, all as a non-engineer.</p>
+        <p class="how">I <b>connected four live systems and encoded the firm's real rules and guardrails</b> into reusable, trigger-phrase workflows, plus two scheduled daily tasks, all self-taught.</p>
         <div class="foot"><a class="btn" href="#case">Read the case study →</a></div>
       </div>
 
