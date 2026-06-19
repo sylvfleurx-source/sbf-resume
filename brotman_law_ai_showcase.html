@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sophie Brotman — AI tools &amp; websites I've built</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2c2147; --slate:#6c6485; --mist:#a097b8; --line:#ece6f7;
+    --paper:#faf8fe; --card:#ffffff; --accent:#7a4ddb; --accent-soft:#f1ebfb;
+    --gold:#d869a8; --shadow:0 1px 2px rgba(70,45,120,.05),0 10px 28px rgba(100,65,170,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Nunito',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.brand,.subhead,.btn,nav.mainnav a{font-family:'Quicksand','Nunito',sans-serif}
+  h1{font-weight:700}
+  h3{font-weight:600}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  header.top{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#f3ecfd,#ffffff);position:sticky;top:0;z-index:10;backdrop-filter:saturate(1.2)}
+  .top .wrap{display:flex;justify-content:space-between;align-items:center;padding:15px 24px;flex-wrap:wrap;gap:10px}
+  .brand{font-weight:700;letter-spacing:-.01em;font-size:17px}
+  .brand span{color:var(--accent)}
+  nav.mainnav{display:flex;gap:20px;align-items:center}
+  nav.mainnav a{font-size:13.5px;color:var(--slate);font-weight:600}
+  nav.mainnav a:hover{color:var(--accent);text-decoration:none}
+
+  .hero{padding:56px 0 40px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
+  h1{font-size:38px;line-height:1.12;letter-spacing:-.02em;margin-bottom:18px;max-width:18ch}
+  .lede{font-size:18px;color:var(--slate);max-width:64ch}
+  .lede strong{color:var(--ink);font-weight:600}
+
+  section{padding:34px 0;border-top:1px solid var(--line)}
+  h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);font-weight:700;margin-bottom:22px}
+  h3{font-size:18px;letter-spacing:-.01em;margin-bottom:6px}
+
+  /* pipeline */
+  .pipe{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+  .step{flex:1 1 150px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;position:relative;box-shadow:var(--shadow)}
+  .step .ph{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .step .ti{font-weight:600;margin-top:4px;font-size:15px}
+  .step .de{font-size:13px;color:var(--slate);margin-top:4px}
+
+  /* skill cards */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+  .card .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:999px;margin-bottom:12px}
+  .card p{font-size:14.5px;color:var(--slate);margin-bottom:12px}
+  .card .does{list-style:none;font-size:13.5px;color:var(--ink)}
+  .card .does li{padding-left:18px;position:relative;margin-bottom:5px}
+  .card .does li:before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .triggers{margin-top:13px;font-size:12.5px;color:var(--mist)}
+  .triggers code{background:#f1f4f7;color:var(--slate);padding:2px 7px;border-radius:6px;font-size:12px;margin-right:5px;display:inline-block;margin-bottom:5px}
+
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:13px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;color:var(--ink);font-weight:500}
+  .chip b{color:var(--accent)}
+  .chip.muted{color:var(--mist);background:transparent;border-style:dashed}
+  .note{font-size:13.5px;color:var(--slate);margin-top:14px;max-width:70ch}
+
+  /* mess list */
+  .mess{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .mi{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 16px}
+  .mi b{display:block;font-size:14px;margin-bottom:3px}
+  .mi span{font-size:13px;color:var(--slate)}
+
+  /* guardrails */
+  .rails{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .rail{font-size:14px;color:var(--ink);padding-left:24px;position:relative}
+  .rail:before{content:"\2713";position:absolute;left:0;top:0;color:var(--accent);font-weight:800}
+  .rail span{color:var(--slate)}
+
+  .proof{background:var(--ink);color:#dfe7ec;border-radius:16px;padding:30px 32px;margin-top:8px}
+  .proof h3{color:#fff;font-size:20px;margin-bottom:10px}
+  .proof p{color:#c8bce4;font-size:15.5px;max-width:72ch}
+  .proof .kw{color:#fff;font-weight:600}
+
+  /* buttons + other-sites */
+  .btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:999px;box-shadow:var(--shadow)}
+  .btn:hover{background:#6a3dc9;text-decoration:none;color:#fff}
+  .btn.btn-ghost{background:var(--accent-soft);color:var(--accent);box-shadow:none}
+  .btn.btn-ghost:hover{background:#e7ddfa;color:var(--accent)}
+  .herobtns{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap}
+  .subhead{font-size:29px;line-height:1.15;letter-spacing:-.02em;max-width:24ch;margin-top:6px}
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:start}
+  .builds{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .build{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .build h3{margin-bottom:2px}
+  .build .url{font-size:12.5px;color:var(--accent);font-weight:600;margin-bottom:12px}
+  .build .what{font-size:14.5px;color:var(--slate);margin-bottom:12px}
+  .build .how{font-size:13.5px;color:var(--ink);margin-bottom:20px}
+  .build .how b{color:var(--accent);font-weight:600}
+  .build .foot{margin-top:auto}
+  footer{padding:30px 0 60px;color:var(--mist);font-size:13px}
+  @media(max-width:720px){
+    h1{font-size:30px}
+    .subhead{font-size:24px}
+    .grid,.mess,.rails,.builds,.about-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">Sophia <span>Brotman</span> ✦</div>
+    <nav class="mainnav">
+      <a href="#case">Featured project</a>
+      <a href="#builds">Other sites</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero" id="top">
+    <div class="eyebrow">Welcome ✦</div>
+    <h1>Hi, I'm Sophie Brotman.</h1>
+    <p class="lede">I'm a philosophy student at Barnard College of Columbia University, a legal assistant at a tax law firm, and a bilingual volunteer in immigration advocacy. I'm also a builder. I make AI tools, automations, and websites, usually as the only non-engineer in the room. This page is a quick tour of what I've made. Thanks for taking a look.</p>
+    <div class="herobtns">
+      <a class="btn" href="#case">See my featured project →</a>
+      <a class="btn btn-ghost" href="#builds">Browse the sites →</a>
+    </div>
+  </div>
+
+  <section id="case">
+    <div class="eyebrow">Featured project</div>
+    <h1 class="subhead">I automated a tax law firm's client pipeline, end to end, as a non-engineer.</h1>
+    <p class="lede" style="margin-top:14px">Brotman Law had no dedicated intake specialist, so I took intake on. Then I built an AI operations suite that runs a potential client from the first phone call through retainers, powers of attorney, and onboarding, with the firm's real rules and guardrails encoded. <strong>Four reusable skills, four connected systems, zero invented legal language.</strong></p>
+  </section>
+
+  <section>
+    <h2>The pipeline it runs</h2>
+    <div class="pipe">
+      <div class="step"><div class="ph">Pre-consult</div><div class="ti">First contact</div><div class="de">Qualify the caller, capture clean notes, route by matter type.</div></div>
+      <div class="step"><div class="ph">Pre-consult</div><div class="ti">Book the consult</div><div class="de">Verify a real open slot, send the consult link and document folder, and confirm the payment goes through in Clio before locking it in.</div></div>
+      <div class="step"><div class="ph">Consult</div><div class="ti">Capture decisions</div><div class="de">Pull the full transcript, write a structured consult note.</div></div>
+      <div class="step"><div class="ph">Post-consult</div><div class="ti">Retainer &amp; PoA</div><div class="de">Draft from firm templates only, attach the right agency PoA.</div></div>
+      <div class="step"><div class="ph">Post-consult</div><div class="ti">Onboard</div><div class="de">Open the matter, share a secure e-folder, send onboarding email.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Four skills, each triggered by a phrase</h2>
+    <div class="grid">
+
+      <div class="card">
+        <span class="tag">Intake · pre-consult</span>
+        <h3>Intake</h3>
+        <p>Runs a potential new client from first contact to a booked, paid consult.</p>
+        <ul class="does">
+          <li>Finds the contact in the CRM, including under a relative or business entity</li>
+          <li>Hands over a discovery-first call script with probing follow-ups</li>
+          <li>Logs the Fireflies callback as a proper CRM note and moves the deal stage</li>
+          <li>Books against the attorney's real calendar; runs the refer-out protocol when it isn't a fit</li>
+        </ul>
+        <div class="triggers"><code>prep me for [name]</code><code>callback done [name]</code><code>book [name]</code><code>refer out [name]</code></div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Onboarding · post-consult</span>
+        <h3>Onboarding</h3>
+        <p>Takes a client from the end of the consult to an opened matter.</p>
+        <ul class="does">
+          <li>Pulls the full consult transcript, including the wrap-up dictated after the client leaves</li>
+          <li>Drafts retainers from current firm templates only (Flat Fee, Hourly, Submarine)</li>
+          <li>Attaches the matching power of attorney per agency, with the right signing rules</li>
+          <li>Preps Clio onboarding, the secure e-folder, and the internal New Matter email</li>
+        </ul>
+        <div class="triggers"><code>consult done for [name]</code><code>draft retainer</code><code>[name] paid</code></div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Coverage · live call</span>
+        <h3>Intake Script Generator</h3>
+        <p>Builds a verbatim, read-aloud script so anyone can cover the phones and sound trained.</p>
+        <ul class="does">
+          <li>Cold mode: full universal spine plus a trigger table to jump to the right matter block</li>
+          <li>Tailored mode: confirms what's known, asks only what's missing, leads with the deadline</li>
+          <li>Per-matter question sets for IRS and California agency disputes</li>
+          <li>Hard safety rules for criminal matters, with minimum questioning and urgent routing</li>
+        </ul>
+        <div class="triggers"><code>create intake script</code><code>I'm covering the phones</code></div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Communication · drafts only</span>
+        <h3>Email Responder</h3>
+        <p>Drafts client and internal replies in my voice. Never sends. I read and send every one.</p>
+        <ul class="does">
+          <li>Matches house style: warm, concise, one idea per sentence, no em dashes</li>
+          <li>Relays the attorney's guidance, never invents legal or tax advice</li>
+          <li>Pulls context from the CRM and transcripts when useful</li>
+          <li>Flags placeholders and anything to confirm before the email goes out</li>
+        </ul>
+        <div class="triggers"><code>draft a reply</code><code>humanize this</code><code>write a follow-up</code></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>What it connects, and what it can't</h2>
+    <div class="chips">
+      <div class="chip"><b>HubSpot</b> · CRM, contacts, deals, pipeline</div>
+      <div class="chip"><b>Fireflies</b> · call and consult transcripts</div>
+      <div class="chip"><b>Microsoft 365</b> · Outlook calendar and email</div>
+      <div class="chip"><b>Calendly</b> · consult booking</div>
+      <div class="chip muted">Clio · no connector → driven via browser</div>
+      <div class="chip muted">Dropbox Sign · no connector → manual prep</div>
+    </div>
+    <p class="note">The systems with no integration are routed through Claude in Chrome and structured manual prep instead of being faked. Knowing the boundary up front is what keeps the whole thing honest.</p>
+  </section>
+
+  <section>
+    <h2>The hard part was encoding the mess</h2>
+    <div class="mess">
+      <div class="mi"><b>Data lives where systems put it</b><span>Intake details land in the CRM phone field via a Zapier rule, not the notes, so that is where the system reads them.</span></div>
+      <div class="mi"><b>Calendar holds lie</b><span>Holds are routinely marked "free" instead of "busy," so every slot is verified against the real Outlook calendar before it is confirmed.</span></div>
+      <div class="mi"><b>The decision is at the end</b><span>The attorney dictates the consult wrap-up after the client leaves, so billing, scope, and PoA decisions live at the end of the transcript.</span></div>
+      <div class="mi"><b>Records hide under other names</b><span>A deal may be filed under a relative or a business entity, so a lookup checks family members and entities too.</span></div>
+    </div>
+    <p class="note">Anyone can connect a CRM. Knowing to read the phone field is the job.</p>
+  </section>
+
+  <section>
+    <h2>The guardrails are the product</h2>
+    <div class="rails">
+      <div class="rail"><b>Not the attorney.</b> <span>No legal or tax advice, no outcome predictions. It relays the attorney's guidance and routes merits questions to the consult.</span></div>
+      <div class="rail"><b>Approval before every write.</b> <span>Nothing is written to the CRM or sent to a client without my sign-off.</span></div>
+      <div class="rail"><b>Client PII never touches the AI.</b> <span>Social Security and EIN numbers go on the form by my hand only, never into notes, memory, or chat.</span></div>
+      <div class="rail"><b>Confidentiality holds.</b> <span>Transcript links are never pasted into the CRM; records are referenced by title and date.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>It runs on a schedule, not just on demand</h2>
+    <p class="note" style="margin-top:0;margin-bottom:18px">The last move was the one that made it a system instead of a pile of one-off conversations. Two scheduled tasks run on their own each day, one to open it and one to close it, each reading straight from the system where the answer actually lives.</p>
+    <div class="pipe">
+      <div class="step"><div class="ph">Morning · scheduled</div><div class="ti">PNC brief</div><div class="de">A start-of-day task that looks through Fireflies, reading the notes and transcripts from the potential new client consults and callbacks, and tells me which PNCs need attention and what the next step is.</div></div>
+      <div class="step"><div class="ph">End of day · scheduled</div><div class="ti">Intake count</div><div class="de">A close-out task that looks through my Outlook calendar to tally the day's intake activity, so the pipeline is reconciled before I log off.</div></div>
+    </div>
+  </section>
+
+  <section style="border-top:none;padding-top:8px">
+    <div class="proof">
+      <h3>What this proves</h3>
+      <p>I took a real, messy, high-stakes professional pipeline and automated it end to end across <span class="kw">CRM, scheduling, transcripts, documents, and email</span>, encoding the firm's actual rules and guardrails, <span class="kw">as a non-engineer</span>, by understanding the work deeply enough to translate it into software. Then I packaged it into reusable, trigger-phrase workflows and a daily operating rhythm, so the process runs the same way every time, with or without me at the desk.</p>
+    </div>
+  </section>
+
+  <section id="builds">
+    <h2>Other sites I've built ✦</h2>
+    <div class="builds">
+
+      <div class="build">
+        <h3>Mirari</h3>
+        <div class="url">my own AI concept</div>
+        <p class="what">An AI fashion concept, my own idea, taken from a sketch to a working demo.</p>
+        <p class="how">I grounded it by <b>researching how FashionCLIP image-embedding models work</b>, then deliberately scoped the build to a demo I could actually ship with the resources I had, instead of overpromising a full product I couldn't stand behind.</p>
+        <div class="foot"><a class="btn" href="https://sofelle-git-main-sofelle.vercel.app" target="_blank" rel="noopener">Visit Mirari →</a></div>
+      </div>
+
+      <div class="build">
+        <h3>Fit2Serve</h3>
+        <div class="url">fit-2-serve.fit</div>
+        <p class="what">A website for City of Praise's Fit2Serve ministry. Tech built for a real community organization, live on its own custom domain.</p>
+        <p class="how">I <b>designed and deployed the site end to end</b> and set it up on a custom .fit domain, so the ministry has a permanent, professional home online that it owns.</p>
+        <div class="foot"><a class="btn" href="https://fit-2-serve.fit" target="_blank" rel="noopener">Visit Fit2Serve →</a></div>
+      </div>
+
+      <div class="build">
+        <h3>Soda Pawp</h3>
+        <div class="url">soda-pawp.github.io</div>
+        <p class="what">A multi-page online shop and portfolio for an independent artist, with a gallery, store, commissions, and a payment page.</p>
+        <p class="how">I <b>hand-built the pages in HTML and CSS and deployed them free on GitHub Pages</b>, structured so the artist can swap in new work and take commissions without ever touching the code.</p>
+        <div class="foot"><a class="btn" href="https://soda-pawp.github.io/soda-pawp/" target="_blank" rel="noopener">Visit Soda Pawp →</a></div>
+      </div>
+
+      <div class="build">
+        <h3>Brotman Law AI Operations</h3>
+        <div class="url">the case study above</div>
+        <p class="what">The intake-to-onboarding automation suite for a tax law firm, detailed at the top of this page.</p>
+        <p class="how">I <b>connected four live systems and encoded the firm's real rules and guardrails</b> into reusable, trigger-phrase workflows, plus two scheduled daily tasks, all as a non-engineer.</p>
+        <div class="foot"><a class="btn" href="#case">Read the case study →</a></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>A little about me ✦</h2>
+    <div class="about-grid">
+      <div>
+        <p class="lede" style="font-size:16px">I'm a philosophy student at Barnard College of Columbia University, drawn to language, reasoning, and law. I pair that with hands-on work in legal and technical settings: analyzing IRS transcripts and building client-tracking systems at a tax law firm, translating for Spanish-speaking asylum seekers so they can pursue their cases on their own, and, before that, machining parts as a red-tag-certified member of a Baja SAE team. The throughline is the same instinct behind the projects above. I like to understand a messy real-world process deeply enough to build something that makes it work better.</p>
+        <div class="chips" style="margin-top:18px">
+          <div class="chip"><b>Bilingual</b> · English &amp; Spanish</div>
+          <div class="chip">Tax &amp; legal research</div>
+          <div class="chip">Data &amp; Excel systems</div>
+          <div class="chip">AI tools &amp; automation</div>
+          <div class="chip">Web (HTML/CSS)</div>
+          <div class="chip">Machining &amp; fabrication</div>
+        </div>
+        <div style="margin-top:22px"><a class="btn" href="https://www.linkedin.com/in/sophia-b-a42303300" target="_blank" rel="noopener">Connect on LinkedIn →</a></div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px;margin-bottom:8px">Now</h3>
+        <ul class="does" style="margin-bottom:16px">
+          <li>Legal Assistant, Brotman Law (tax controversy)</li>
+          <li>Spanish Translator, New Sanctuary Coalition</li>
+          <li>Philosophy, Barnard College of Columbia University</li>
+        </ul>
+        <h3 style="font-size:15px;margin-bottom:8px">Education</h3>
+        <ul class="does">
+          <li>Barnard College of Columbia University, Philosophy (2025–2028)</li>
+          <li>Gonzaga University, Philosophy &amp; English, Pre-Law</li>
+          <li>La Jolla Country Day School</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Sophie Brotman · Legal Assistant and AI builder · New York, NY · built with Claude ♡
+    Confidential client details are omitted; this describes the system, not any matter.
+  </footer>
+
+</div>
+</body>
+</html>
