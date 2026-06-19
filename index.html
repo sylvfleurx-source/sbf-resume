@@ -100,6 +100,14 @@
   .build .how{font-size:13.5px;color:var(--ink);margin-bottom:20px}
   .build .how b{color:var(--accent);font-weight:600}
   .build .foot{margin-top:auto}
+  .thumb{position:relative;aspect-ratio:16/10;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,var(--accent-soft),#fff);margin-bottom:16px;display:flex;align-items:center;justify-content:center}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb.empty::after{content:"✦ add screenshot";color:var(--accent);font-weight:600;font-size:13px;font-family:'Quicksand',sans-serif;letter-spacing:.02em}
+  .thumb.wide{aspect-ratio:2/1;margin:20px 0 0}
+  .briefshot{margin:22px 0 0;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#1a1a1c}
+  .briefshot img{width:100%;height:auto;display:block}
+  .briefshot figcaption{font-size:12.5px;color:var(--mist);padding:11px 16px;background:var(--card);font-family:'Quicksand',sans-serif}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;color:#fff;background:var(--gold);padding:3px 11px;border-radius:999px;margin-bottom:10px;font-family:'Quicksand',sans-serif}
   footer{padding:30px 0 60px;color:var(--mist);font-size:13px}
   @media(max-width:720px){
     h1{font-size:30px}
@@ -264,6 +272,7 @@
     <div class="builds">
 
       <div class="build">
+        <div class="thumb"><img src="images/mirari.png" alt="Mirari" onerror="this.style.display='none';this.parentNode.classList.add('empty')"></div>
         <h3>Mirari</h3>
         <div class="url">my own AI concept</div>
         <p class="what">An AI fashion concept, my own idea, taken from a sketch to a working demo.</p>
@@ -272,22 +281,26 @@
       </div>
 
       <div class="build">
+        <div class="thumb"><img src="images/fit2serve.png" alt="Fit2Serve workout logger" onerror="this.style.display='none';this.parentNode.classList.add('empty')"></div>
         <h3>Fit2Serve</h3>
+        <span class="badge">22 active users</span>
         <div class="url">fit-2-serve.fit</div>
-        <p class="what">A website for City of Praise's Fit2Serve ministry. Tech built for a real community organization, live on its own custom domain.</p>
-        <p class="how">I <b>designed and deployed the site end to end</b> and set it up on a custom .fit domain, so the ministry has a permanent, professional home online that it owns.</p>
+        <p class="what">A workout-logging web app I built for a church ministry. Members log walks, runs, and workouts, and the app tracks miles, steps, and minutes and ranks everyone on a live leaderboard, with a shared schedule alongside it.</p>
+        <p class="how">I <b>built the whole app end to end</b>, the logging form, the leaderboard, and the schedule, and shipped it on its own custom domain. It currently has 22 active members in the ministry logging their workouts.</p>
         <div class="foot"><a class="btn" href="https://fit-2-serve.fit" target="_blank" rel="noopener">Visit Fit2Serve →</a></div>
       </div>
 
       <div class="build">
+        <div class="thumb"><img src="images/sodapawp.png" alt="Soda Pawp" onerror="this.style.display='none';this.parentNode.classList.add('empty')"></div>
         <h3>Soda Pawp</h3>
         <div class="url">soda-pawp.github.io</div>
-        <p class="what">A multi-page online shop and portfolio for an independent artist, with a gallery, store, commissions, and a payment page.</p>
-        <p class="how">I <b>hand-built the pages in HTML and CSS and deployed them free on GitHub Pages</b>, structured so the artist can swap in new work and take commissions without ever touching the code.</p>
+        <p class="what">A full storefront I built for an independent artist. It has a home page, gallery, product shop, and commissions page, plus an order-and-pay flow. Customers browse charms, stickers, and keychains, start an order, and pay through their choice of Zelle, Venmo, Cash App, PayPal, or Mercari.</p>
+        <p class="how">I <b>designed and built the whole multi-page site in HTML and CSS and deployed it on GitHub Pages</b>, wiring up the order and interest forms and the payment options so the artist can take real commissions without ever touching the code.</p>
         <div class="foot"><a class="btn" href="https://soda-pawp.github.io/soda-pawp/" target="_blank" rel="noopener">Visit Soda Pawp →</a></div>
       </div>
 
       <div class="build">
+        <div class="thumb"><img src="images/brotman.png" alt="Brotman Law AI Operations" onerror="this.style.display='none';this.parentNode.classList.add('empty')"></div>
         <h3>Brotman Law AI Operations</h3>
         <div class="url">the case study above</div>
         <p class="what">The intake-to-onboarding automation suite for a tax law firm, detailed at the top of this page.</p>
